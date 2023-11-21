@@ -1,30 +1,82 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request
+from urllib.parse import quote as url_quote
+from requests import get
 import socket
-import random
+import urllib.request
+import psutil
+import helper
+import os
+import hashlib
+import secrets  # Import the secrets module
 
-app = Flask(__name__)
+global numberOfCalls
+numberOfCalls = 1
 
+def get_ip():
+    hostname = socket.gethostname()
+    return socket.gethostbyname(hostname)
 
-# List of recognized colors
-recognized_colors = ['aqua', 'blue', 'green', 'red', 'yellow']
+def valueCalculation(requestEnvironment):
+    global numberOfCalls
+    numberOfCalls = numberOfCalls + 1
 
-# Define your welcome message and group members' names here
-welcome_message = "Winter Semester 2023/2024 AMC-LAB Project"
-member1_name = "Md Hazrat Ali"
-member2_name = "Ejike Patrick Aka"
+    WHOAMICOLOR = os.getenv('WHOAMICOLOR')
+    print(WHOAMICOLOR)
+    if WHOAMICOLOR == None:
+        # Generate a random background color
+        bgColor = "#" + secrets.token_hex(3)
+    else:
+        # evaluate WHOAMICOLOR
+        if WHOAMICOLOR == "red":
+            bgColor = "#ff3030"
+        elif WHOAMICOLOR == "green":
+            bgColor = "#76ee00"
+        elif WHOAMICOLOR == "blue":
+            bgColor = "#4876ff"
+        elif WHOAMICOLOR == "yellow":
+            bgColor = "#eeee00"
+        elif WHOAMICOLOR == "purple":  # Corrected the spelling mistake
+            bgColor = "#9b30ff"
+        else:
+            # Generate a random background color
+            bgColor = "#" + secrets.token_hex(3)
 
-def random_color():
-    return random.choice(recognized_colors)
+    if helper.rgb_brightness(bgColor) < 150:
+        txtColor = "#ffffff"
+    else:
+        txtColor = "#000000"
+
+    try:
+        IP4 = socket.getaddrinfo(socket.gethostname(), None, socket.AF_INET)[1][4][0]
+    except:
+        IP4 = "no IPv4"
+
+    try:
+        IP6 = socket.getaddrinfo(socket.gethostname(), None, socket.AF_INET6)[1][4][0]
+    except:
+        IP6 = "no IPv6"
+
+    if IP4 == IP6:
+        IP6 = "no IPv6"
+
+    # Collect all values
+    Werte = {
+        "numberOfCalls": numberOfCalls,
+        "bgColor": bgColor,
+        "txtColor": txtColor,
+        "hostname": socket.gethostname(),
+        "IP4": IP4,
+        "IP6": IP6,
+        "hitnumber": numberOfCalls,
+    }
+    return Werte
+
+app = Flask(__name__, template_folder="templates")
 
 @app.route('/')
-def index():
-    # Choose random color for text
-    text_color = random_color()
-
-    # Choose a random color for the background
-    background_color = random_color()
-
-    return render_template('index.html', text_color=text_color, background_color=background_color, welcome_message=welcome_message, member1_name=member1_name, member2_name=member2_name)
+def home():
+    Werte = valueCalculation(request.environ)
+    return render_template('/index.html', Werte=Werte)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='::', port=80)
