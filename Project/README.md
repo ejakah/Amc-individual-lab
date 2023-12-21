@@ -14,9 +14,11 @@
 
 `minikube service amc-lab -n ejaka --url  (URL LINK)`
 
-`kubectl get pods --namespace=ejaka`
+# VERIFY THE THREE RUNNING REPLICALS OR PODS 
 
 `kubecolor get pods --namespace=ejaka`
+
+`kubectl get pods --namespace=ejaka`
 
 # WE DELETE ONE OF THE PODS TO DETERMINE IF ANOTHER POD WILL BE AUTOMATICALLY CREATED BASED ON AUTO-HEALING.
 # NOTE, EDIT THE NAME SPACE ID YOU WISH TO DELETE e.g 
