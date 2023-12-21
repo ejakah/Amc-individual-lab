@@ -3,7 +3,7 @@ Project Title: Implementation of a Cloud-Based Web Application Deployment Strate
 
 # Project Description:
 This project aims to demonstrate the deployment of a web application to the cloud utilizing modern DevOps
-practices, such as creating Virtual Private Cloud (VPC). The application will be hosted on a Kubernetes cluster and
+practices, such as creating a Virtual Private Cloud (VPC). The application will be hosted on a Kubernetes cluster and
 made accessible via a Kubernetes Load Balancer service with the integration of Ngrok. This project serves to
 exemplify the end-to-end deployment process, encompassing aspects such as code version control,
 containerization, and Kubernetes orchestration.
@@ -47,29 +47,27 @@ application. It creates a tunnel between the public internet and the Kubernetes 
 A comprehensive monitoring solution, such as AWS Grafana or CloudWatch, is
 implemented to track the performance and health of the deployed application.
 ## Kubernetes Load Balancer Investigation with Hostname-based Visualization
-The Load Balancer Investigation is aimed at enhancing the monitoring and analysis of a web service in load
-balancing scenarios. The primary objective is to create a visual indicator that changes the background color of the
+The Load Balancer Investigation is aimed at enhancing the monitoring and analysis of a web service in load-balancing scenarios. The primary objective is to create a visual indicator that changes the background color of the
 web page based on the hostname used to access the service. This allows for immediate identification of whether a
-different container or host has responded to a request, facilitating efficient load balancing configuration and
+different container or host has responded to a request, facilitating efficient load-balancing configuration and
 troubleshooting.
 # 1. Visual Identification: 
 Develop a feature to change the background color of the web page based on the
 hostname used for access.
 # 2. Hostname-Based Background Color Change:
- Implement a mechanism (algorithm) to dynamically change the
-background color of the web page based on the hostname.
+ Implement a mechanism (algorithm) to dynamically change the background color of the web page based on the hostname.
 # 3. User-Friendly Interface: 
-Design an intuitive and user-friendly interface that clearly conveys the relationship
+Design an intuitive and user-friendly interface that conveys the relationship
 between hostname and background color.
 # 4. Debugging and Monitoring: 
-Facilitate load balancing configuration, monitor, and debugging by visually
+Facilitate load balancing configuration, monitoring, and debugging by visually
 indicating the responding host or container.
 #Benefits:
 ▪ Quickly identify changes in the serving infrastructure, ensuring an even distribution of requests
 across containers or hosts.
-▪ The Load Balancer Investigation aims to enhance the efficiency of load balancing scenarios by
+▪ The Load Balancer Investigation aims to enhance the efficiency of load-balancing scenarios by
 introducing a visual indicator that changes the background color of the web page, based on the
-hostname. This feature will facilitate load balancing analysis and debugging, making it easier to
+hostname. This feature will facilitate load-balancing analysis and debugging, making it easier to
 identify changes in the serving infrastructure. The project will be implemented following the defined
 scope, and comprehensive documentation will be provided to support users in effectively utilizing
 the feature.
@@ -87,23 +85,23 @@ security groups. Set up the GitHub repository for version control.
 • Create a GitHub repository for the project.
 # Milestone 2
 • Code development
-• Clone project code from our GitHub to Linux machine.
+• Clone project code from our GitHub to a Linux machine.
 # Milestone 3:
  Docker Containerization and Kubernetes Cluster Setup
 # Objective: 
-Containerize the web application using Docker. Deploy a Kubernetes cluster (minikube) for container
+Containerize the web application using Docker. Set-up Kubernetes cluster (minikube) for container
 orchestration.
 # Tasks:
 • Develop a Dockerfile to containerize the application.
 • Build a Docker image of the web application.
-• Deploy a Kubernetes cluster within the chosen cloud environment.
+• Set up Kubernetes cluster within the chosen cloud environment.
 • Configure the kubectl tool for interaction with the cluster.
 # Milestone 4: 
 Kubernetes Deployment and Load Balancer Integration
 Objective: Develop Kubernetes deployment YAML files for the web application, initiate the deployment, and
 integrate a Kubernetes Load Balancer service for efficient traffic distribution.
 # Tasks:
-• Create Kubernetes deployment YAML files specifying resources, environment variables.
+• Create Kubernetes deployment YAML files specifying resources and environment variables.
 • Initiate the deployment of the web application to the Kubernetes cluster.
 • Set up a Kubernetes LoadBalancer service for external access.
 # Milestone 5: 
@@ -112,7 +110,7 @@ Ngrok Tunneling and Monitoring Implementation
 Configure Ngrok for secure external access and implement a monitoring solution (e.g., AWS Grafana or
 CloudWatch) to track application performance.
 # Tasks:
-• From Kubernetes load balancer service, configure Ngrok to provides an accessible HTTP link.
+• From Kubernetes load balancer service, configure Ngrok to provide an accessible HTTP link.
 • Set up monitoring tools and dashboards for application performance monitoring.
 These milestones provide a structured approach to the project, with each stage building upon the previous one.
 Completion of these milestones will lead to the successful deployment of a cloud-based web application on AWS
