@@ -27,3 +27,12 @@
 
 # DELETE ALL RUNNING PODS 
 `kubectl delete pods --namespace=ejaka --all`
+
+# DELETE SERVICE 
+`kubectl delete service amc-lab -n ejaka`
+
+# RECREATE SERVICE 
+`kubectl apply -f service.yaml`
+
+# VERIFY THE NEW SERVICE
+`kubectl get services -n ejaka`
