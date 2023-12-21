@@ -18,9 +18,12 @@
 
 `kubecolor get pods --namespace=ejaka`
 
-# WE DELETE ONE OF THE PORTS TO DETERMINE IF ANOTHER PORT WILL BE AUTOMATICALLY CREATED BASED ON AUTO HEALING
+# WE DELETE ONE OF THE PORTS TO DETERMINE IF ANOTHER PORT WILL BE AUTOMATICALLY CREATED BASED ON AUTO-HEALING
 # NOTE, EDIT THE NAME SPACE ID YOU WISH TO DELETE e.g 
 
 * amclab-deployment-bf6f9b6fb-b8z84 *
 
 `kubectl delete pod amclab-deployment-bf6f9b6fb-b8z84 --namespace=ejaka`
+
+# DELETE ALL RUNNING PODS 
+`kubectl delete pods --namespace=ejaka --all`
